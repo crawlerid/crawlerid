@@ -1,0 +1,79 @@
+name: Add a crawler
+description: Propose a crawler or AI agent for the registry. An official source from the operator is required.
+title: 'Add crawler: '
+labels: ['data', 'new crawler']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Every entry must come from the **operator's own documentation**. Third-party bot lists can point you to it, but they are not a source.
+        Prefer to open a pull request? Edit `data/crawlers.json`. [CONTRIBUTING.md](https://github.com/crawlerid/crawlerid/blob/main/CONTRIBUTING.md#adding-a-crawler) walks you through it.
+  - type: input
+    id: name
+    attributes:
+      label: Crawler name
+      placeholder: ExampleBot
+    validations:
+      required: true
+  - type: input
+    id: operator
+    attributes:
+      label: Operator
+      placeholder: Example Inc.
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Official documentation URL
+      description: The operator's page that describes the crawler.
+      placeholder: https://example.com/docs/bot
+    validations:
+      required: true
+  - type: textarea
+    id: user-agent
+    attributes:
+      label: Full User-Agent string(s)
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - search
+        - ai-training
+        - ai-search
+        - ai-assistant
+        - ai-agent
+        - ads
+        - preview
+        - fetcher
+        - other
+    validations:
+      required: true
+  - type: input
+    id: ip-list
+    attributes:
+      label: Official IP list URL (machine-readable), if any
+      placeholder: https://example.com/bot-ips.json
+  - type: input
+    id: reverse-dns
+    attributes:
+      label: Reverse DNS hostname suffix, if documented
+      placeholder: crawl.example.com
+  - type: dropdown
+    id: robots
+    attributes:
+      label: Does the operator say it follows robots.txt?
+      options:
+        - 'Yes'
+        - 'No'
+        - Not stated
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to open the pull request for this myself.

@@ -1,0 +1,52 @@
+name: Refresh IP ranges
+
+# Downloads every operator's official IP list each week and opens a pull
+# request when a prefix changed. Requires "Allow GitHub Actions to create and
+# approve pull requests" under Settings → Actions → General.
+
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency: refresh-ip-ranges
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - id: update
+        run: npm run data:update
+      - name: Open or update the pull request
+        if: steps.update.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          branch="data/refresh-ip-ranges"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add data/ip-ranges.json
+          git commit -m "data: refresh official IP ranges ($today)"
+          git push --force origin "$branch"
+          body="Automated weekly refresh of \`data/ip-ranges.json\` from the operators' official lists.
+
+          Sources that failed to download this run: ${{ steps.update.outputs.failed }} (their previous data was kept; see the workflow log).
+
+          Review the diff, then merge and cut a patch release so users get the new ranges. CI does not run automatically on pull requests opened by GitHub Actions; close and reopen this PR to trigger it."
+          if gh pr view "$branch" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$branch" --title "data: refresh official IP ranges ($today)" --body "$body"
+          else
+            gh pr create --head "$branch" --title "data: refresh official IP ranges ($today)" --body "$body"
+          fi

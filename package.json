@@ -1,0 +1,75 @@
+{
+  "name": "crawlerid",
+  "version": "0.1.0",
+  "description": "Identify and verify web crawlers and AI agents (GPTBot, ClaudeBot, Googlebot, PerplexityBot…) against their operators' official IP ranges and reverse DNS. Zero dependencies, edge-ready.",
+  "keywords": [
+    "crawler",
+    "bot",
+    "bot-detection",
+    "verify",
+    "googlebot",
+    "bingbot",
+    "gptbot",
+    "claudebot",
+    "perplexitybot",
+    "ai-crawlers",
+    "ai-agents",
+    "robots.txt",
+    "user-agent",
+    "seo",
+    "edge"
+  ],
+  "homepage": "https://github.com/crawlerid/crawlerid#readme",
+  "bugs": "https://github.com/crawlerid/crawlerid/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crawlerid/crawlerid.git"
+  },
+  "license": "MIT",
+  "author": "Daniel Eremeev (https://danieleremeev.dev)",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    },
+    "./crawlers.json": "./data/crawlers.json",
+    "./ip-ranges.json": "./data/ip-ranges.json",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "crawlerid": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "data/crawlers.json",
+    "data/crawlers.schema.json",
+    "data/ip-ranges.json"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "gen": "node scripts/gen-data.mjs",
+    "build": "npm run gen && node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.build.json",
+    "typecheck": "npm run gen && tsc --noEmit",
+    "test": "npm run gen && vitest run",
+    "test:watch": "npm run gen && vitest",
+    "docs": "node scripts/docs.mjs",
+    "docs:check": "node scripts/docs.mjs --check",
+    "data:update": "npm run build && node scripts/update-ip-ranges.mjs && npm run gen",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

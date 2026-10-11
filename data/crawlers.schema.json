@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/crawlerid/crawlerid/blob/main/data/crawlers.schema.json",
+  "title": "crawlerid registry",
+  "description": "Known web crawlers and AI agents, sourced from their operators' official documentation.",
+  "type": "object",
+  "required": ["version", "crawlers"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "crawlers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "operator", "category", "userAgents", "robotsTokens", "respectsRobotsTxt", "docs", "verification"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "description": "Stable lowercase identifier." },
+          "name": { "type": "string", "minLength": 1 },
+          "operator": { "type": "string", "minLength": 1, "description": "Company or project running the crawler." },
+          "category": {
+            "enum": ["search", "ai-training", "ai-search", "ai-assistant", "ai-agent", "ads", "preview", "fetcher", "other"]
+          },
+          "userAgents": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+            "description": "Whole tokens that identify the crawler in a User-Agent header. Empty for robots.txt-only control tokens."
+          },
+          "robotsTokens": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+            "description": "Tokens the crawler obeys in robots.txt User-agent lines."
+          },
+          "respectsRobotsTxt": { "type": ["boolean", "null"], "description": "null when the operator does not say." },
+          "docs": { "type": "string", "pattern": "^https://", "description": "Official documentation: the source for this entry." },
+          "verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ipRanges", "reverseDns"],
+            "properties": {
+              "ipRanges": {
+                "type": "array",
+                "items": { "type": "string", "format": "uri" },
+                "description": "Official machine-readable IP range lists (JSON)."
+              },
+              "reverseDns": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Hostname suffixes for forward-confirmed reverse DNS, lowercase, no leading dot."
+              }
+            }
+          },
+          "notes": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+name: Correct crawler data
+description: A token, IP list, DNS suffix, category or robots.txt detail is wrong or out of date.
+title: 'Data: '
+labels: ['data']
+body:
+  - type: input
+    id: crawler
+    attributes:
+      label: Crawler id
+      description: As shown by `npx crawlerid list`.
+      placeholder: gptbot
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong, and what should it be?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source for the correction
+      placeholder: https://…
+    validations:
+      required: true

@@ -1,0 +1,633 @@
+{
+  "$schema": "./crawlers.schema.json",
+  "version": 1,
+  "crawlers": [
+    {
+      "id": "googlebot",
+      "name": "Googlebot",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": ["Googlebot"],
+      "robotsTokens": ["Googlebot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      }
+    },
+    {
+      "id": "googlebot-image",
+      "name": "Googlebot Image",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": ["Googlebot-Image"],
+      "robotsTokens": ["Googlebot-Image"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Also obeys rules for the Googlebot token."
+    },
+    {
+      "id": "googlebot-video",
+      "name": "Googlebot Video",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": ["Googlebot-Video"],
+      "robotsTokens": ["Googlebot-Video"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Also obeys rules for the Googlebot token."
+    },
+    {
+      "id": "googlebot-news",
+      "name": "Googlebot News",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": [],
+      "robotsTokens": ["Googlebot-News"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "robots.txt token only: Google News crawling uses the regular Googlebot user agents."
+    },
+    {
+      "id": "storebot-google",
+      "name": "Google StoreBot",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": ["Storebot-Google"],
+      "robotsTokens": ["Storebot-Google"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Affects Google Shopping surfaces."
+    },
+    {
+      "id": "google-inspectiontool",
+      "name": "Google-InspectionTool",
+      "operator": "Google",
+      "category": "search",
+      "userAgents": ["Google-InspectionTool"],
+      "robotsTokens": ["Google-InspectionTool"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Used by Search testing tools such as the Rich Results Test and URL Inspection."
+    },
+    {
+      "id": "googleother",
+      "name": "GoogleOther",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["GoogleOther"],
+      "robotsTokens": ["GoogleOther"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Generic crawler used by various Google product teams."
+    },
+    {
+      "id": "googleother-image",
+      "name": "GoogleOther-Image",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["GoogleOther-Image"],
+      "robotsTokens": ["GoogleOther-Image"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Also obeys rules for the GoogleOther token."
+    },
+    {
+      "id": "googleother-video",
+      "name": "GoogleOther-Video",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["GoogleOther-Video"],
+      "robotsTokens": ["GoogleOther-Video"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Also obeys rules for the GoogleOther token."
+    },
+    {
+      "id": "google-cloudvertexbot",
+      "name": "Google-CloudVertexBot",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["Google-CloudVertexBot"],
+      "robotsTokens": ["Google-CloudVertexBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/common-crawlers.json"],
+        "reverseDns": ["googlebot.com"]
+      },
+      "notes": "Crawls at the request of site owners building Vertex AI Agents. No effect on Google Search."
+    },
+    {
+      "id": "google-extended",
+      "name": "Google-Extended",
+      "operator": "Google",
+      "category": "ai-training",
+      "userAgents": [],
+      "robotsTokens": ["Google-Extended"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "robots.txt control token only, it never appears in a User-Agent header. Governs use of crawled content for training Gemini models and for grounding; does not affect Search."
+    },
+    {
+      "id": "adsbot-google",
+      "name": "AdsBot",
+      "operator": "Google",
+      "category": "ads",
+      "userAgents": ["AdsBot-Google", "AdsBot-Google-Mobile"],
+      "robotsTokens": ["AdsBot-Google", "AdsBot-Google-Mobile"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-special-case-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/special-crawlers.json"],
+        "reverseDns": ["google.com"]
+      },
+      "notes": "Ignores the 'User-agent: *' group; it must be named explicitly to be restricted."
+    },
+    {
+      "id": "mediapartners-google",
+      "name": "Mediapartners-Google",
+      "operator": "Google",
+      "category": "ads",
+      "userAgents": ["Mediapartners-Google"],
+      "robotsTokens": ["Mediapartners-Google"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-special-case-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/special-crawlers.json"],
+        "reverseDns": ["google.com"]
+      },
+      "notes": "AdSense crawler. Ignores the 'User-agent: *' group; it must be named explicitly to be restricted."
+    },
+    {
+      "id": "apis-google",
+      "name": "APIs-Google",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["APIs-Google"],
+      "robotsTokens": ["APIs-Google"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-special-case-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/special-crawlers.json"],
+        "reverseDns": ["google.com"]
+      },
+      "notes": "Ignores the 'User-agent: *' group; it must be named explicitly to be restricted."
+    },
+    {
+      "id": "google-safety",
+      "name": "Google-Safety",
+      "operator": "Google",
+      "category": "other",
+      "userAgents": ["Google-Safety"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-special-case-crawlers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/special-crawlers.json"],
+        "reverseDns": ["google.com"]
+      },
+      "notes": "Abuse-detection crawler; ignores robots.txt."
+    },
+    {
+      "id": "feedfetcher-google",
+      "name": "Feedfetcher",
+      "operator": "Google",
+      "category": "fetcher",
+      "userAgents": ["FeedFetcher-Google"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers",
+      "verification": {
+        "ipRanges": [
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers.json",
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers-google.json"
+        ],
+        "reverseDns": ["gae.googleusercontent.com", "google.com"]
+      },
+      "notes": "User-triggered fetcher; these generally ignore robots.txt."
+    },
+    {
+      "id": "google-read-aloud",
+      "name": "Google Read Aloud",
+      "operator": "Google",
+      "category": "fetcher",
+      "userAgents": ["Google-Read-Aloud", "google-speakr"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers",
+      "verification": {
+        "ipRanges": [
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers.json",
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers-google.json"
+        ],
+        "reverseDns": ["gae.googleusercontent.com", "google.com"]
+      },
+      "notes": "User-triggered fetcher; 'google-speakr' is the deprecated former token."
+    },
+    {
+      "id": "google-site-verification",
+      "name": "Google Site Verifier",
+      "operator": "Google",
+      "category": "fetcher",
+      "userAgents": ["Google-Site-Verification"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers",
+      "verification": {
+        "ipRanges": [
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers.json",
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers-google.json"
+        ],
+        "reverseDns": ["gae.googleusercontent.com", "google.com"]
+      },
+      "notes": "User-triggered fetcher."
+    },
+    {
+      "id": "google-gemini-notebook",
+      "name": "Gemini Notebook",
+      "operator": "Google",
+      "category": "ai-assistant",
+      "userAgents": ["Google-GeminiNotebook", "Google-NotebookLM"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers",
+      "verification": {
+        "ipRanges": [
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers.json",
+          "https://developers.google.com/static/crawling/ipranges/user-triggered-fetchers-google.json"
+        ],
+        "reverseDns": ["gae.googleusercontent.com", "google.com"]
+      },
+      "notes": "Fetches sources a user adds to a notebook. 'Google-NotebookLM' is the former token (supported until August 2026)."
+    },
+    {
+      "id": "google-agent",
+      "name": "Google-Agent",
+      "operator": "Google",
+      "category": "ai-agent",
+      "userAgents": ["Google-Agent"],
+      "robotsTokens": [],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers",
+      "verification": {
+        "ipRanges": ["https://developers.google.com/static/crawling/ipranges/user-triggered-agents.json"],
+        "reverseDns": ["google.com", "gae.googleusercontent.com"]
+      },
+      "notes": "Agentic browsing on behalf of a user; ignores robots.txt because a human triggered the visit."
+    },
+    {
+      "id": "bingbot",
+      "name": "Bingbot",
+      "operator": "Microsoft",
+      "category": "search",
+      "userAgents": ["bingbot"],
+      "robotsTokens": ["bingbot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://www.bing.com/webmasters/help/how-to-verify-bingbot-3905dc26",
+      "verification": {
+        "ipRanges": ["https://www.bing.com/toolbox/bingbot.json"],
+        "reverseDns": ["search.msn.com"]
+      }
+    },
+    {
+      "id": "applebot",
+      "name": "Applebot",
+      "operator": "Apple",
+      "category": "search",
+      "userAgents": ["Applebot"],
+      "robotsTokens": ["Applebot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://support.apple.com/en-us/119829",
+      "verification": {
+        "ipRanges": ["http://search.developer.apple.com/applebot.json"],
+        "reverseDns": ["applebot.apple.com"]
+      }
+    },
+    {
+      "id": "applebot-extended",
+      "name": "Applebot-Extended",
+      "operator": "Apple",
+      "category": "ai-training",
+      "userAgents": [],
+      "robotsTokens": ["Applebot-Extended"],
+      "respectsRobotsTxt": true,
+      "docs": "https://support.apple.com/en-us/119829",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "robots.txt control token only, it does not crawl. Opts content out of training Apple's foundation models without affecting Search."
+    },
+    {
+      "id": "gptbot",
+      "name": "GPTBot",
+      "operator": "OpenAI",
+      "category": "ai-training",
+      "userAgents": ["GPTBot"],
+      "robotsTokens": ["GPTBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "verification": { "ipRanges": ["https://openai.com/gptbot.json"], "reverseDns": [] }
+    },
+    {
+      "id": "oai-searchbot",
+      "name": "OAI-SearchBot",
+      "operator": "OpenAI",
+      "category": "ai-search",
+      "userAgents": ["OAI-SearchBot"],
+      "robotsTokens": ["OAI-SearchBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "verification": { "ipRanges": ["https://openai.com/searchbot.json"], "reverseDns": [] }
+    },
+    {
+      "id": "chatgpt-user",
+      "name": "ChatGPT-User",
+      "operator": "OpenAI",
+      "category": "ai-assistant",
+      "userAgents": ["ChatGPT-User"],
+      "robotsTokens": ["ChatGPT-User"],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "verification": { "ipRanges": ["https://openai.com/chatgpt-user.json"], "reverseDns": [] },
+      "notes": "Visits pages when a ChatGPT user asks; robots.txt rules may not apply to user-initiated actions."
+    },
+    {
+      "id": "oai-adsbot",
+      "name": "OAI-AdsBot",
+      "operator": "OpenAI",
+      "category": "ads",
+      "userAgents": ["OAI-AdsBot"],
+      "robotsTokens": ["OAI-AdsBot"],
+      "respectsRobotsTxt": null,
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "verification": { "ipRanges": ["https://openai.com/adsbot.json"], "reverseDns": [] },
+      "notes": "Checks landing pages submitted as ads for policy compliance."
+    },
+    {
+      "id": "claudebot",
+      "name": "ClaudeBot",
+      "operator": "Anthropic",
+      "category": "ai-training",
+      "userAgents": ["ClaudeBot"],
+      "robotsTokens": ["ClaudeBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://support.claude.com/en/articles/8896518-what-is-claude-bot",
+      "verification": { "ipRanges": ["https://claude.com/crawling/bots.json"], "reverseDns": [] }
+    },
+    {
+      "id": "claude-searchbot",
+      "name": "Claude-SearchBot",
+      "operator": "Anthropic",
+      "category": "ai-search",
+      "userAgents": ["Claude-SearchBot"],
+      "robotsTokens": ["Claude-SearchBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://support.claude.com/en/articles/8896518-what-is-claude-bot",
+      "verification": { "ipRanges": ["https://claude.com/crawling/bots.json"], "reverseDns": [] }
+    },
+    {
+      "id": "claude-user",
+      "name": "Claude-User",
+      "operator": "Anthropic",
+      "category": "ai-assistant",
+      "userAgents": ["Claude-User"],
+      "robotsTokens": ["Claude-User"],
+      "respectsRobotsTxt": true,
+      "docs": "https://support.claude.com/en/articles/8896518-what-is-claude-bot",
+      "verification": { "ipRanges": ["https://claude.com/crawling/bots.json"], "reverseDns": [] },
+      "notes": "Fetches pages when a Claude user asks a question."
+    },
+    {
+      "id": "perplexitybot",
+      "name": "PerplexityBot",
+      "operator": "Perplexity",
+      "category": "ai-search",
+      "userAgents": ["PerplexityBot"],
+      "robotsTokens": ["PerplexityBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://docs.perplexity.ai/guides/bots",
+      "verification": { "ipRanges": ["https://www.perplexity.com/perplexitybot.json"], "reverseDns": [] }
+    },
+    {
+      "id": "perplexity-user",
+      "name": "Perplexity-User",
+      "operator": "Perplexity",
+      "category": "ai-assistant",
+      "userAgents": ["Perplexity-User"],
+      "robotsTokens": ["Perplexity-User"],
+      "respectsRobotsTxt": false,
+      "docs": "https://docs.perplexity.ai/guides/bots",
+      "verification": { "ipRanges": ["https://www.perplexity.com/perplexity-user.json"], "reverseDns": [] },
+      "notes": "User-requested fetches; generally ignores robots.txt."
+    },
+    {
+      "id": "mistralai-user",
+      "name": "MistralAI-User",
+      "operator": "Mistral AI",
+      "category": "ai-assistant",
+      "userAgents": ["MistralAI-User"],
+      "robotsTokens": ["MistralAI-User"],
+      "respectsRobotsTxt": null,
+      "docs": "https://docs.mistral.ai/robots",
+      "verification": { "ipRanges": ["https://mistral.ai/mistralai-user-ips.json"], "reverseDns": [] }
+    },
+    {
+      "id": "mistralai-index",
+      "name": "MistralAI-Index",
+      "operator": "Mistral AI",
+      "category": "ai-search",
+      "userAgents": ["MistralAI-Index"],
+      "robotsTokens": ["MistralAI-Index"],
+      "respectsRobotsTxt": null,
+      "docs": "https://docs.mistral.ai/robots",
+      "verification": { "ipRanges": ["https://mistral.ai/mistralai-index-ips.json"], "reverseDns": [] }
+    },
+    {
+      "id": "mistralai-training",
+      "name": "MistralAI-Training",
+      "operator": "Mistral AI",
+      "category": "ai-training",
+      "userAgents": ["MistralAI-Training"],
+      "robotsTokens": ["MistralAI-Training"],
+      "respectsRobotsTxt": true,
+      "docs": "https://docs.mistral.ai/robots",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "No IP ranges published."
+    },
+    {
+      "id": "ccbot",
+      "name": "CCBot",
+      "operator": "Common Crawl",
+      "category": "ai-training",
+      "userAgents": ["CCBot"],
+      "robotsTokens": ["CCBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://commoncrawl.org/ccbot",
+      "verification": {
+        "ipRanges": ["https://index.commoncrawl.org/ccbot.json"],
+        "reverseDns": ["crawl.commoncrawl.org"]
+      },
+      "notes": "Open web archive whose datasets are widely used to train AI models. Reverse DNS is IPv4-only; use the IP list for IPv6."
+    },
+    {
+      "id": "amazonbot",
+      "name": "Amazonbot",
+      "operator": "Amazon",
+      "category": "ai-training",
+      "userAgents": ["Amazonbot"],
+      "robotsTokens": ["Amazonbot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developer.amazon.com/amazonbot",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "May be used to train Amazon AI models. Amazon publishes its IP list as an HTML page (https://developer.amazon.com/amazonbot/ip-addresses/), which is not parsed yet."
+    },
+    {
+      "id": "amzn-searchbot",
+      "name": "Amzn-SearchBot",
+      "operator": "Amazon",
+      "category": "ai-search",
+      "userAgents": ["Amzn-SearchBot"],
+      "robotsTokens": ["Amzn-SearchBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developer.amazon.com/amazonbot",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "Search experiences such as Alexa; not used for AI training. IP list published as an HTML page (https://developer.amazon.com/amazonbot/searchbot-ip-addresses/), not parsed yet."
+    },
+    {
+      "id": "amzn-user",
+      "name": "Amzn-User",
+      "operator": "Amazon",
+      "category": "ai-assistant",
+      "userAgents": ["Amzn-User"],
+      "robotsTokens": ["Amzn-User"],
+      "respectsRobotsTxt": false,
+      "docs": "https://developer.amazon.com/amazonbot",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "User-initiated fetches (e.g. Alexa answers); may not follow all robots.txt directives. IP list published as an HTML page (https://developer.amazon.com/amazonbot/live-ip-addresses/), not parsed yet."
+    },
+    {
+      "id": "meta-externalagent",
+      "name": "Meta-ExternalAgent",
+      "operator": "Meta",
+      "category": "ai-training",
+      "userAgents": ["meta-externalagent"],
+      "robotsTokens": ["meta-externalagent"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "Training foundation AI models. Meta publishes crawler IPs only through its ASN (AS32934), which is not supported yet."
+    },
+    {
+      "id": "meta-externalfetcher",
+      "name": "Meta-ExternalFetcher",
+      "operator": "Meta",
+      "category": "ai-assistant",
+      "userAgents": ["meta-externalfetcher"],
+      "robotsTokens": ["meta-externalfetcher"],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "User-requested fetches, including agentic AI tasks; may bypass robots.txt."
+    },
+    {
+      "id": "meta-webindexer",
+      "name": "Meta-WebIndexer",
+      "operator": "Meta",
+      "category": "ai-search",
+      "userAgents": ["meta-webindexer"],
+      "robotsTokens": ["meta-webindexer"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "Improves Meta AI search results."
+    },
+    {
+      "id": "meta-externalads",
+      "name": "Meta-ExternalAds",
+      "operator": "Meta",
+      "category": "ads",
+      "userAgents": ["meta-externalads"],
+      "robotsTokens": ["meta-externalads"],
+      "respectsRobotsTxt": true,
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] }
+    },
+    {
+      "id": "facebookexternalhit",
+      "name": "FacebookExternalHit",
+      "operator": "Meta",
+      "category": "preview",
+      "userAgents": ["facebookexternalhit"],
+      "robotsTokens": ["facebookexternalhit"],
+      "respectsRobotsTxt": false,
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "Builds link previews for content shared on Meta apps; may bypass robots.txt for security or integrity checks."
+    },
+    {
+      "id": "duckduckbot",
+      "name": "DuckDuckBot",
+      "operator": "DuckDuckGo",
+      "category": "search",
+      "userAgents": ["DuckDuckBot"],
+      "robotsTokens": ["DuckDuckBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "IP addresses are listed inline on the help page rather than in a machine-readable file."
+    },
+    {
+      "id": "duckassistbot",
+      "name": "DuckAssistBot",
+      "operator": "DuckDuckGo",
+      "category": "ai-assistant",
+      "userAgents": ["DuckAssistBot"],
+      "robotsTokens": ["DuckAssistBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot",
+      "verification": { "ipRanges": [], "reverseDns": [] },
+      "notes": "Real-time fetches for cited DuckAssist answers; not used for AI training. IP addresses are listed inline on the help page."
+    },
+    {
+      "id": "yandexbot",
+      "name": "YandexBot",
+      "operator": "Yandex",
+      "category": "search",
+      "userAgents": ["YandexBot"],
+      "robotsTokens": ["YandexBot"],
+      "respectsRobotsTxt": true,
+      "docs": "https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html",
+      "verification": { "ipRanges": [], "reverseDns": ["yandex.ru", "yandex.net", "yandex.com"] }
+    }
+  ]
+}

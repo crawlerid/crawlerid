@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: README crawler table is up to date
+        run: npm run docs:check
+      - run: npm run build
+      - name: CLI smoke test
+        run: |
+          node dist/cli.js --version
+          node dist/cli.js identify "Mozilla/5.0 (compatible; GPTBot/1.1; +https://openai.com/gptbot)" | grep -q GPTBot
+          node dist/cli.js robots --disallow ai-training | grep -q "User-agent: GPTBot"
+      - run: npm pack --dry-run
+
+  runtime-node20:
+    # The published package supports Node >= 20.19 even though the dev tooling needs 22+.
+    name: Runtime check (Node 20)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci && npm run build
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+      - run: |
+          node dist/cli.js --version
+          node --input-type=module -e "
+            const m = await import('./dist/index.js');
+            if (m.identify('GPTBot/1.1')?.id !== 'gptbot') process.exit(1);
+            if (!m.robotsTxt({ categories: { 'ai-training': 'disallow' } }).includes('ClaudeBot')) process.exit(1);
+          "

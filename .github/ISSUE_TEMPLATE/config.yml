@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/crawlerid/crawlerid/discussions
+    about: Ask how to use crawlerid, share integrations, or propose bigger changes.
+  - name: Report a security vulnerability
+    url: https://github.com/crawlerid/crawlerid/security/advisories/new
+    about: Please report vulnerabilities privately, not as public issues.

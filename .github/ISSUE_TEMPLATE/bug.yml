@@ -1,0 +1,39 @@
+name: Bug report
+description: Something in the library or CLI does not work as documented.
+labels: ['bug']
+body:
+  - type: input
+    id: version
+    attributes:
+      label: crawlerid version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: runtime
+    attributes:
+      label: Runtime
+      options:
+        - Node.js
+        - Bun
+        - Deno
+        - Cloudflare Workers
+        - Vercel Edge / Next.js middleware
+        - Browser
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Code or CLI command, plus the User-Agent and IP involved (use documentation IPs such as 192.0.2.1 if you'd rather not share real ones).
+      render: ts
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
